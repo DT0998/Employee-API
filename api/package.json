@@ -6,6 +6,7 @@
     "hbs": "^4.1.2",
     "mongodb": "^4.3.0",
     "mongoose": "^6.1.5",
+    "mongoose-auto-increment": "^5.0.1",
     "mongoose-delete": "^0.5.4",
     "morgan": "^1.10.0"
   },

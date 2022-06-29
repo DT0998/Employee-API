@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-const employeeURL = `mongodb://localhost:27017/Employee`;
+const employeeURL = `mongodb://localhost:27017/employee`;
 
 // create connect mongodb
-const connect = mongoose.connect(employeeURL, (error) => {
+const connection = mongoose.connect(employeeURL, (error) => {
   if (error) {
     console.log(`${error} connecting to database`);
   } else {
@@ -11,4 +11,4 @@ const connect = mongoose.connect(employeeURL, (error) => {
   }
 });
 
-module.exports = connect;
+module.exports = connection;

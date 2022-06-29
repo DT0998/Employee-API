@@ -3,17 +3,30 @@ const { Users } = require('../models/employee');
 const db = require('../utils/db');
 
 // route get employee
-exports.getEmployee = function(req,res){
-  Users.find(function(err,user){
-    if(err){
-      console.log(err);
+exports.getEmployee = function(request,response){
+  Users.find(function(error,user){
+    if(error){
+      console.log(error);
     }
-    res.json(user);
+    response.json(user);
   })
+}
+// route post employee
+exports.postEmployee = function(request,response){
+  let newEmployee = new Users();
+  newEmployee.name = request.body.name;
+  newEmployee.email = request.body.email;
+  newEmployee.save(function(error,user){
+    if(error){
+      console.log(error);
+    }
+    response.json(user)
+  })
+
 }
 
 
-// // route post user
+
 // employeeRoutes.post("/", (response) => {
 //   var newUser = new User();
 //   newUser.name = req.body.name;
