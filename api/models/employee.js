@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const autoIncrement = require('mongoose-auto-increment');
 const db = require("../utils/db");
+// lib softdelete
+const MongooseDelete = require("mongoose-delete");
 
 // user schema
 let userSchema = new Schema({
@@ -27,5 +29,10 @@ userSchema.plugin(autoIncrement.plugin, {
   incrementBy: 1, // incremented by 1
 });
 let Users = mongoose.model("users", userSchema);
+// add plugin soft delete
+userSchema.plugin(MongooseDelete, {
+    deletedAt: true,
+    overrideMethods: "all",
+});
 
 module.exports = { Users, userSchema };
