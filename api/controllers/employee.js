@@ -44,29 +44,24 @@ exports.softDeleteEmployee = function (request, response) {
     response.json(user);
   });
 };
+// route restore employee
+exports.restoreEmployee = function (request, response) {
+  let userId = request.body.userId;
+  Users.restore({ userId }, function (error, user) {
+    if (error) {
+      console.log(error);
+    }
+    response.json(user);
+  });
+};
 
-// //  route restore employee
-// employeeRoutes.post("/restore", (req, res) => {
-//   var id = req.body.id;
-//   User.restore({ _id: id }, function (err) {
-//     if (err) {
-//       console.log(err);
-//     }
-//   });
-//   console.log(id);
-//   res.redirect("/trash");
-// });
-
-// // route edit employee 
-// employeeRoutes.post("/update", (req, res) => {
-//   var id = req.body.id;
-//   User.findById(id, function (err, user) {
-//     if (err) {
-//       console.log(err);
-//     }
-//     user.name = req.body.name;
-//     user.email = req.body.email;
-//     user.save();
-//   });
-//   res.redirect("/");
-// });
+// route edit employee
+exports.editEmployee = function (request, response) {
+  let userId = request.body.userId;
+  Users.findById(userId, function (error, user) {
+    if (error) {
+      console.log(error);
+    }
+    response.json(user);
+  });
+};
