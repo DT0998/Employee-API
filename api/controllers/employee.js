@@ -2,7 +2,7 @@
 const { Users } = require("../models/employee");
 
 // route get employee
-exports.getEmployee = function (request, response) {
+exports.getEmployee = function (response) {
   Users.find(function (error, user) {
     if (error) {
       console.log(error);
