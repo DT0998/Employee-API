@@ -3,10 +3,6 @@ const Schema = mongoose.Schema;
 const db = require("../utils/db");
 // user schema
 let userSchema = new Schema({
-  employeeId: {
-    type: Number,
-    unique: true,
-  },
   name: {
     type: String,
     trim: true,
@@ -24,4 +20,4 @@ let userSchema = new Schema({
 
 const User = mongoose.model("User", userSchema);
 
-module.exports = { User };
+module.exports = { User,userSchema };
