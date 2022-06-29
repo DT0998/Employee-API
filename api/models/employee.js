@@ -22,7 +22,7 @@ let userSchema = new Schema({
 autoIncrement.initialize(mongoose.connection);
 userSchema.plugin(autoIncrement.plugin, {
   model: "users", // collection or table name in which you want to apply auto increment
-  field: "_id", // field of model which you want to auto increment
+  field: "userId", // field of model which you want to auto increment
   startAt: 1, // start your auto increment value from 1
   incrementBy: 1, // incremented by 1
 });
