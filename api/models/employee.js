@@ -20,7 +20,7 @@ let userSchema = new Schema({
   dateAdded: { type: Date, default: Date.now },
 });
 
-// auto increment id
+// add auto increment id
 autoIncrement.initialize(mongoose.connection);
 userSchema.plugin(autoIncrement.plugin, {
   model: "users", // collection or table name in which you want to apply auto increment
@@ -29,6 +29,7 @@ userSchema.plugin(autoIncrement.plugin, {
   incrementBy: 1, // incremented by 1
 });
 let Users = mongoose.model("users", userSchema);
+
 // add plugin soft delete
 userSchema.plugin(MongooseDelete, {
     deletedAt: true,
