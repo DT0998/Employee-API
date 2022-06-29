@@ -1,22 +1,19 @@
-// use path module
-const path = require("path");
-// use hbs view engine
-const hbs = require("hbs");
 const bodyParser = require("body-parser");
 // config server
 // use express module
 const express = require("express");
-const user = require("./models/employee.db");
 let app = express();
 let port = process.env.PORT || 3000;
 
 // db import
-const User = mongoose.model("user", user);
-
+const db = require('./utils/db')
 // lib softdelete
 const mongooseDelete = require("mongoose-delete");
-// add plugin
-user.plugin(mongooseDelete, {
+// schema
+const { User } = require("./models/employee");
+
+// add plugin soft delete
+User.plugin(mongooseDelete, {
   deletedAt: true,
   overrideMethods: "all",
 });
@@ -26,13 +23,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // const http = require('http');
 
-
-
-// set dynamic view files
-app.set("views", path.join(__dirname, "views"));
-
-// set view engine
-app.set("view engine", "hbs");
 
 // route delete
 app.get("/trash", (req, res) => {
@@ -117,6 +107,12 @@ app.post("/update", (req, res) => {
     user.save();
   });
   res.redirect("/");
+});
+
+app.get('/', (request, response) => {
+  response.send({
+      message: 'Node.js and Express REST API'}
+  );
 });
 
 // server listerning
