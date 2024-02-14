@@ -2,9 +2,14 @@ const logger = require("pino");
 const dayjs = require("dayjs");
 
 const log = logger({
-  prettyPrint: true,
   base: {
     pid: false,
+  },
+  transport: {
+    target: "pino-pretty",
+    options: {
+      colorize: true,
+    }
   },
   timestamp: () => `,"time":"${dayjs().format()}"`,
 });

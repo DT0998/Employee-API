@@ -4,12 +4,12 @@ const {
   startMetricsServer,
   restResponseTimeHistogram,
 } = require("./API/utils/mettrics");
-const routes = require("./API/routes/employee.routes");
 const swaggerDocs = require("./API/utils/swagger");
 const logger = require("./API/utils/logger");
 const connect = require("./API/utils/connect");
 const config = require("config");
 const responseTime = require("response-time");
+const { employeeRoutes } = require("./API/routes/index.routes");
 
 const port = config.get("port");
 const app = express();
@@ -37,7 +37,7 @@ app.listen(port, async () => {
 
   await connect();
 
-  routes(app, "api");
+  employeeRoutes(app, "api");
 
   startMetricsServer();
 
