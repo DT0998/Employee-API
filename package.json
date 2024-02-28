@@ -13,7 +13,7 @@
     "prom-client": "^15.1.0",
     "response-time": "^2.3.2"
   },
-  "name": "nodejs-crud",
+  "name": "nodejs-express-mongodb",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {

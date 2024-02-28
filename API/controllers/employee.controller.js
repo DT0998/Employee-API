@@ -1,5 +1,4 @@
 // import employee model
-const { default: mongoose } = require("mongoose");
 const { Employee } = require("../schema/employee.schema");
 
 // route get employee
