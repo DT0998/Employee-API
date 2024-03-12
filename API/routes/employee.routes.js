@@ -17,7 +17,7 @@ function routes(app, rootUrl) {
    */
   /**
    * @swagger
-   * /api/Employee:
+   * /api/employee:
    *   get:
    *     summary: Get all employees
    *     tags: [Employee]
@@ -27,11 +27,11 @@ function routes(app, rootUrl) {
    *       500:
    *         description: Some server error
    */
-  app.get(`/${rootUrl}/Employee`, getEmployee);
+  app.get(`/${rootUrl}/employee`, getEmployee);
 
   /**
    * @swagger
-   * /api/Employee:
+   * /api/employee:
    *   post:
    *     summary: Create a new employee
    *     tags: [Employee]
@@ -51,10 +51,10 @@ function routes(app, rootUrl) {
    *       500:
    *         description: Some server error
    */
-  app.post(`/${rootUrl}/Employee`, createEmployee);
+  app.post(`/${rootUrl}/employee`, createEmployee);
   /**
    * @swagger
-   * /api/Employee:
+   * /api/employee/:employeeId:
    *   put:
    *     summary: Update an employee by ID
    *     tags: [Employee]
@@ -91,10 +91,11 @@ function routes(app, rootUrl) {
    *       500:
    *         description: Internal Server Error
    */
-  app.put(`/${rootUrl}/Employee`, editEmployee);
+  app.put(`/${rootUrl}/employee/:employeeId`, editEmployee);
+
   /**
    * @swagger
-   * /api/Employee:
+   * /api/employee/:employeeId:
    *   delete:
    *     summary: Hard delete an employee by ID
    *     tags: [Employee]
@@ -113,10 +114,10 @@ function routes(app, rootUrl) {
    *       500:
    *         description: Internal Server Error
    */
-  app.delete(`/${rootUrl}/Employee`, hardDeleteEmployee);
+  app.delete(`/${rootUrl}/employee/:employeeId`, hardDeleteEmployee);
   /**
    * @swagger
-   * /api/Employee/SoftDelete:
+   * /api/employee/soft-delete/:employeeId:
    *   delete:
    *     summary: Soft delete an employee by ID
    *     tags: [Employee]
@@ -135,10 +136,10 @@ function routes(app, rootUrl) {
    *       500:
    *         description: Internal Server Error
    */
-  app.delete(`/${rootUrl}/Employee/SoftDelete`, softDeleteEmployee);
+  app.delete(`/${rootUrl}/employee/soft-delete/:employeeId`, softDeleteEmployee);
   /**
    * @swagger
-   * /api/Employee/Restore:
+   * /api/employee/restore/:employeeId:
    *   post:
    *     summary: Restore a soft deleted employee by ID
    *     tags: [Employee]
@@ -157,7 +158,7 @@ function routes(app, rootUrl) {
    *       500:
    *         description: Internal Server Error
    */
-  app.post(`/${rootUrl}/Employee/Restore`, restoreEmployee);
+  app.post(`/${rootUrl}/employee/restore/:employeeId`, restoreEmployee);
 }
 
 module.exports = routes;
