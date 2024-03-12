@@ -26,7 +26,7 @@ function createEmployee(request, response) {
 
 // route hard delete employee
 function hardDeleteEmployee(request, response) {
-  const employeeId = request.params.EmployeeId;
+  const employeeId = request.query.employeeId;
   Employee.deleteOne({ employeeId }, function (error, employee) {
     if (!employee) {
       return response.status(404).send({ error: "Employee not found" });
@@ -40,7 +40,7 @@ function hardDeleteEmployee(request, response) {
 
 // route soft delete employee
 function softDeleteEmployee(request, response) {
-  const employeeId = request.params.EmployeeId;
+  const employeeId = request.query.employeeId;
   Employee.deleteById(employeeId, function (error, employee) {
     if (!employee) {
       return response.status(404).send({ error: "Employee not found" });
@@ -54,7 +54,7 @@ function softDeleteEmployee(request, response) {
 
 // route restore employee
 function restoreEmployee(request, response) {
-  const employeeId = request.params.EmployeeId;
+  const employeeId = request.query.employeeId;
   Employee.restore({ employeeId }, function (error, employee) {
     if (!employee) {
       return response.status(404).send({ error: "Employee not found" });
@@ -68,7 +68,7 @@ function restoreEmployee(request, response) {
 
 // route edit employee
 function editEmployee(request, response) {
-  const employeeId = request.params.EmployeeId;
+  const employeeId = request.query.employeeId;
   const newName = request.body.name;
   const newEmail = request.body.email;
 
