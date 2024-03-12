@@ -135,7 +135,7 @@ function routes(app, rootUrl) {
    *       500:
    *         description: Internal Server Error
    */
-  app.delete(`/${rootUrl}/Employee/SoftDelete/`, softDeleteEmployee);
+  app.delete(`/${rootUrl}/Employee/SoftDelete`, softDeleteEmployee);
   /**
    * @swagger
    * /api/Employee/Restore:
