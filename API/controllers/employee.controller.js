@@ -2,17 +2,17 @@
 const { Employee } = require("../schema/employee.schema");
 
 // route get employee
-function getEmployee(_request, response) {
+const getEmployee = (_request, response) => {
   Employee.find(function (error, employee) {
     if (error) {
       return response.status(500).send({ error: "Error" });
     }
     response.send({ data: employee, total: employee.length });
   });
-}
+};
 
 // route post employee
-function createEmployee(request, response) {
+const createEmployee = (request, response) => {
   let newEmployee = new Employee();
   newEmployee.name = request.body.name;
   newEmployee.email = request.body.email;
@@ -22,10 +22,10 @@ function createEmployee(request, response) {
     }
     response.send(employee);
   });
-}
+};
 
 // route hard delete employee
-function hardDeleteEmployee(request, response) {
+const hardDeleteEmployee = (request, response) => {
   const employeeId = request.param.employeeId;
   Employee.deleteOne({ employeeId }, function (error, employee) {
     if (!employee) {
@@ -36,10 +36,10 @@ function hardDeleteEmployee(request, response) {
     }
     response.send(employee);
   });
-}
+};
 
 // route soft delete employee
-function softDeleteEmployee(request, response) {
+const softDeleteEmployee = (request, response) => {
   const employeeId = request.param.employeeId;
   Employee.deleteById(employeeId, function (error, employee) {
     if (!employee) {
@@ -50,10 +50,10 @@ function softDeleteEmployee(request, response) {
     }
     response.send(employee);
   });
-}
+};
 
 // route restore employee
-function restoreEmployee(request, response) {
+const restoreEmployee = (request, response) => {
   const employeeId = request.param.employeeId;
   Employee.restore({ employeeId }, function (error, employee) {
     if (!employee) {
@@ -64,10 +64,10 @@ function restoreEmployee(request, response) {
     }
     response.send(employee);
   });
-}
+};
 
 // route edit employee
-function editEmployee(request, response) {
+const editEmployee = (request, response) => {
   const employeeId = request.param.employeeId;
   const newName = request.body.name;
   const newEmail = request.body.email;
@@ -98,7 +98,7 @@ function editEmployee(request, response) {
       response.send(updatedEmployee);
     });
   });
-}
+};
 
 module.exports = {
   getEmployee,
